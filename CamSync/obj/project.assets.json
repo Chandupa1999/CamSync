@@ -91,11 +91,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yashasvi Chandupa\\Desktop\\Project\\amf-assignment\\CamSync\\CamSync\\CamSync.csproj",
+      "projectUniqueName": "C:\\Users\\Yashasvi Chandupa\\Desktop\\Project\\CamSync\\CamSync\\CamSync.csproj",
       "projectName": "CamSync",
-      "projectPath": "C:\\Users\\Yashasvi Chandupa\\Desktop\\Project\\amf-assignment\\CamSync\\CamSync\\CamSync.csproj",
+      "projectPath": "C:\\Users\\Yashasvi Chandupa\\Desktop\\Project\\CamSync\\CamSync\\CamSync.csproj",
       "packagesPath": "C:\\Users\\Yashasvi Chandupa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yashasvi Chandupa\\Desktop\\Project\\amf-assignment\\CamSync\\CamSync\\obj\\",
+      "outputPath": "C:\\Users\\Yashasvi Chandupa\\Desktop\\Project\\CamSync\\CamSync\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

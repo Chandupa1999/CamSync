@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bb04MF9rudA=",
+  "dgSpecHash": "rzrDjJSh1P4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yashasvi Chandupa\\Desktop\\Project\\amf-assignment\\CamSync\\CamSync\\CamSync.csproj",
+  "projectFilePath": "C:\\Users\\Yashasvi Chandupa\\Desktop\\Project\\CamSync\\CamSync\\CamSync.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yashasvi Chandupa\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
     "C:\\Users\\Yashasvi Chandupa\\.nuget\\packages\\aforge.video\\2.2.5\\aforge.video.2.2.5.nupkg.sha512",

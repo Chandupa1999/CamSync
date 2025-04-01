@@ -43,6 +43,12 @@
             linePanel = new Panel();
             linePanelLeft = new Panel();
             linePanelRight = new Panel();
+            btnRotate1 = new Button();
+            btnRotate2 = new Button();
+            btnFlip1 = new Button();
+            btnFlip2 = new Button();
+            label3 = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic2).BeginInit();
             SuspendLayout();
@@ -83,34 +89,42 @@
             // 
             // pic
             // 
+            pic.BackgroundImageLayout = ImageLayout.Center;
             pic.BorderStyle = BorderStyle.FixedSingle;
             pic.Location = new Point(67, 159);
             pic.Name = "pic";
             pic.Size = new Size(519, 464);
+            pic.SizeMode = PictureBoxSizeMode.CenterImage;
             pic.TabIndex = 4;
             pic.TabStop = false;
             // 
             // pic2
             // 
+            pic2.BackgroundImageLayout = ImageLayout.Center;
             pic2.BorderStyle = BorderStyle.FixedSingle;
             pic2.Location = new Point(586, 159);
+            pic2.Margin = new Padding(0);
             pic2.Name = "pic2";
             pic2.Size = new Size(519, 464);
+            pic2.SizeMode = PictureBoxSizeMode.CenterImage;
             pic2.TabIndex = 5;
             pic2.TabStop = false;
             // 
             // btnStart
             // 
+            btnStart.BackgroundImageLayout = ImageLayout.Zoom;
             btnStart.Location = new Point(470, 113);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(75, 23);
             btnStart.TabIndex = 6;
             btnStart.Text = "Start";
             btnStart.UseVisualStyleBackColor = true;
+            btnStart.UseWaitCursor = true;
             btnStart.Click += btnStart_Click;
             // 
             // btnStop1
             // 
+            btnStop1.Cursor = Cursors.No;
             btnStop1.Location = new Point(389, 113);
             btnStop1.Name = "btnStop1";
             btnStop1.Size = new Size(75, 23);
@@ -121,6 +135,7 @@
             // 
             // btnStop2
             // 
+            btnStop2.Cursor = Cursors.No;
             btnStop2.Location = new Point(919, 113);
             btnStop2.Name = "btnStop2";
             btnStop2.Size = new Size(75, 23);
@@ -131,6 +146,7 @@
             // 
             // btnStart2
             // 
+            btnStart2.Cursor = Cursors.AppStarting;
             btnStart2.Location = new Point(1000, 113);
             btnStart2.Name = "btnStart2";
             btnStart2.Size = new Size(75, 23);
@@ -155,6 +171,7 @@
             // linePanel
             // 
             linePanel.BackColor = Color.Red;
+            linePanel.Cursor = Cursors.HSplit;
             linePanel.Location = new Point(58, 201);
             linePanel.Name = "linePanel";
             linePanel.Size = new Size(1056, 2);
@@ -163,6 +180,7 @@
             // linePanelLeft
             // 
             linePanelLeft.BackColor = SystemColors.MenuHighlight;
+            linePanelLeft.Cursor = Cursors.VSplit;
             linePanelLeft.Location = new Point(317, 149);
             linePanelLeft.Name = "linePanelLeft";
             linePanelLeft.Size = new Size(2, 483);
@@ -171,16 +189,80 @@
             // linePanelRight
             // 
             linePanelRight.BackColor = SystemColors.MenuHighlight;
+            linePanelRight.Cursor = Cursors.VSplit;
             linePanelRight.Location = new Point(820, 149);
             linePanelRight.Name = "linePanelRight";
             linePanelRight.Size = new Size(2, 483);
             linePanelRight.TabIndex = 14;
             // 
+            // btnRotate1
+            // 
+            btnRotate1.Location = new Point(511, 644);
+            btnRotate1.Name = "btnRotate1";
+            btnRotate1.Size = new Size(75, 23);
+            btnRotate1.TabIndex = 15;
+            btnRotate1.Text = "Rotate";
+            btnRotate1.UseVisualStyleBackColor = true;
+            btnRotate1.Click += btnRotate1_Click;
+            // 
+            // btnRotate2
+            // 
+            btnRotate2.Location = new Point(1030, 644);
+            btnRotate2.Name = "btnRotate2";
+            btnRotate2.Size = new Size(75, 23);
+            btnRotate2.TabIndex = 16;
+            btnRotate2.Text = "Rotate";
+            btnRotate2.UseVisualStyleBackColor = true;
+            btnRotate2.Click += btnRotate2_Click;
+            // 
+            // btnFlip1
+            // 
+            btnFlip1.Location = new Point(430, 644);
+            btnFlip1.Name = "btnFlip1";
+            btnFlip1.Size = new Size(75, 23);
+            btnFlip1.TabIndex = 17;
+            btnFlip1.Text = "Flip";
+            btnFlip1.UseVisualStyleBackColor = true;
+            btnFlip1.Click += btnFlip1_Click_1;
+            // 
+            // btnFlip2
+            // 
+            btnFlip2.Location = new Point(949, 644);
+            btnFlip2.Name = "btnFlip2";
+            btnFlip2.Size = new Size(75, 23);
+            btnFlip2.TabIndex = 18;
+            btnFlip2.Text = "Flip";
+            btnFlip2.UseVisualStyleBackColor = true;
+            btnFlip2.Click += btnFlip2_Click_1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(375, 635);
+            label3.Name = "label3";
+            label3.Size = new Size(0, 15);
+            label3.TabIndex = 19;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ActiveCaptionText;
+            panel1.Location = new Point(-194, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1800, 1);
+            panel1.TabIndex = 20;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(1172, 688);
+            Controls.Add(panel1);
+            Controls.Add(label3);
+            Controls.Add(btnFlip2);
+            Controls.Add(btnFlip1);
+            Controls.Add(btnRotate2);
+            Controls.Add(btnRotate1);
             Controls.Add(linePanelRight);
             Controls.Add(linePanelLeft);
             Controls.Add(linePanel);
@@ -222,5 +304,11 @@
         private Panel linePanel;
         private Panel linePanelLeft;
         private Panel linePanelRight;
+        private Button btnRotate1;
+        private Button btnRotate2;
+        private Button btnFlip1;
+        private Button btnFlip2;
+        private Label label3;
+        private Panel panel1;
     }
 }

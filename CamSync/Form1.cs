@@ -41,8 +41,10 @@ namespace CamSync
 
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice1, videoCaptureDevice2;
-
-
+        private int rotationAngle1 = 0; // Rotation for pic1
+        private int rotationAngle2 = 0; // Rotation for pic2
+        private bool flipHorizontal1 = false; // Flip flag for pic1
+        private bool flipHorizontal2 = false; // Flip flag for pic2
 
 
 
@@ -87,6 +89,14 @@ namespace CamSync
         {
             Bitmap frame = (Bitmap)eventArgs.Frame.Clone();
             frame.RotateFlip(RotateFlipType.RotateNoneFlipX); // Flip image horizontally
+
+            // Apply Rotation
+            frame = RotateImage(frame, rotationAngle1);
+
+            // Apply Flip
+            if (flipHorizontal1)
+                frame.RotateFlip(RotateFlipType.RotateNoneFlipX);
+
             pic.Image = frame;
         }
 
@@ -94,6 +104,14 @@ namespace CamSync
         {
             Bitmap frame = (Bitmap)eventArgs.Frame.Clone();
             frame.RotateFlip(RotateFlipType.RotateNoneFlipX); // Flip image horizontally
+
+            // Apply Rotation
+            frame = RotateImage(frame, rotationAngle2);
+
+            // Apply Flip
+            if (flipHorizontal2)
+                frame.RotateFlip(RotateFlipType.RotateNoneFlipX);
+
             pic2.Image = frame;
         }
 
@@ -101,20 +119,97 @@ namespace CamSync
 
 
 
-        private void Form1_Load(object sender, EventArgs e)
+
+
+
+
+        private Bitmap RotateImage(Bitmap img, float angle)
         {
-            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach (FilterInfo filterInfo in filterInfoCollection)
+            // Create a new empty bitmap with enough space to hold the rotated image
+            int newWidth = (angle == 90 || angle == 270) ? img.Height : img.Width;
+            int newHeight = (angle == 90 || angle == 270) ? img.Width : img.Height;
+
+            Bitmap rotatedImage = new Bitmap(newWidth, newHeight);
+
+            using (Graphics g = Graphics.FromImage(rotatedImage))
             {
-                cboCamera.Items.Add(filterInfo.Name);
-                cboCamera2.Items.Add(filterInfo.Name);
+                // Set high-quality rendering
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+                // Move rotation point to center of the new canvas
+                g.TranslateTransform(newWidth / 2f, newHeight / 2f);
+
+                // Rotate image
+                g.RotateTransform(angle);
+
+                // Move image back to correct position
+                g.TranslateTransform(-img.Width / 2f, -img.Height / 2f);
+
+                // Draw original image onto rotated canvas
+                g.DrawImage(img, new Point(0, 0));
             }
 
-            if (cboCamera.Items.Count > 0)
-                cboCamera.SelectedIndex = 0;
+            return rotatedImage;
+        }
 
-            if (cboCamera2.Items.Count > 0)
-                cboCamera2.SelectedIndex = 0;
+
+
+        //rotate buttons
+        private void btnRotate1_Click(object sender, EventArgs e)
+        {
+            rotationAngle1 = (rotationAngle1 + 90) % 360; // Cycle through 0°, 90°, 180°, 270°
+        }
+        private void btnRotate2_Click(object sender, EventArgs e)
+        {
+            rotationAngle2 = (rotationAngle2 + 90) % 360; // Cycle through 0°, 90°, 180°, 270°
+        }
+
+
+
+
+
+
+        //flip buttons
+        //button left
+        private void btnFlip1_Click_1(object sender, EventArgs e)
+        {
+            flipHorizontal1 = !flipHorizontal1; // Toggle flip
+        }
+        private void btnFlip1_Click(object sender, EventArgs e)
+        {
+        }
+        //button right
+        private void btnFlip2_Click(object sender, EventArgs e)
+        {
+        }
+        private void btnFlip2_Click_1(object sender, EventArgs e)
+        {
+            flipHorizontal2 = !flipHorizontal2; // Toggle flip
+        }
+
+
+
+
+
+
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
+            for (int i = 0; i < filterInfoCollection.Count; i++)
+            {
+                string cameraName = $"{filterInfoCollection[i].Name} (Device {i})";
+                cboCamera.Items.Add(cameraName);
+                cboCamera2.Items.Add(cameraName);
+            }
+
+            if (cboCamera.Items.Count > 0) cboCamera.SelectedIndex = 0;
+            if (cboCamera2.Items.Count > 1) cboCamera2.SelectedIndex = 1; // Select different cameras by default
 
             videoCaptureDevice1 = new VideoCaptureDevice();
             videoCaptureDevice2 = new VideoCaptureDevice();
@@ -296,6 +391,7 @@ namespace CamSync
             MessageBox.Show(aboutText, "About CamSync Viewer", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+
 
         
     }

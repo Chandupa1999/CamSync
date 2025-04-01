@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CamSync")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c290c1d250223309997e50487b51991adc57e2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("CamSync")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CamSync")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
